@@ -1,0 +1,9 @@
+{
+"name": "Active Tab Tracker",
+"description": "Pushes active tab URL/title to BillowAgent",
+"manifest_version": 3,
+"version": "0.1",
+"permissions": ["tabs"],
+"host_permissions": ["<all_urls>"],
+"background": { "service_worker": "bg.js" }
+}

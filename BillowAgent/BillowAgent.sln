@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillowAgent", "BillowAgent.csproj", "{F75451BF-6D9B-A366-F149-A5236A38F8CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F75451BF-6D9B-A366-F149-A5236A38F8CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F75451BF-6D9B-A366-F149-A5236A38F8CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F75451BF-6D9B-A366-F149-A5236A38F8CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F75451BF-6D9B-A366-F149-A5236A38F8CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A3187E0D-EDD9-4835-8F7B-8C4467DD45A9}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,5 @@
+C:\Users\Elissa\Documents\BillowAgent\BillowAgent\obj\Debug\net8.0-windows\BillowAgent.csproj.AssemblyReference.cache
+C:\Users\Elissa\Documents\BillowAgent\BillowAgent\obj\Debug\net8.0-windows\BillowAgent.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Elissa\Documents\BillowAgent\BillowAgent\obj\Debug\net8.0-windows\BillowAgent.AssemblyInfoInputs.cache
+C:\Users\Elissa\Documents\BillowAgent\BillowAgent\obj\Debug\net8.0-windows\BillowAgent.AssemblyInfo.cs
+C:\Users\Elissa\Documents\BillowAgent\BillowAgent\obj\Debug\net8.0-windows\BillowAgent.csproj.CoreCompileInputs.cache
