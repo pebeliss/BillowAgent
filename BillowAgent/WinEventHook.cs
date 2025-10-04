@@ -35,20 +35,16 @@ public class WinEventHook : IDisposable
         if (Paused) return;
         if (hwnd == IntPtr.Zero) return;
 
-
         var title = Native.GetWindowText(hwnd);
         var pid = Native.GetPidFromHwnd(hwnd);
         var exe = Native.GetProcessName(pid);
         var now = DateTime.UtcNow;
 
-
         _storage.RecordForegroundEvent(now, exe, title, hwnd);
         _sessionizer.OnForegroundChange(now, exe, title);
     }
 
-
     private delegate void WinEventDelegate(IntPtr hWinEventHook, uint eventType, IntPtr hwnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime);
-
 
     private static class Native
     {
@@ -58,7 +54,6 @@ public class WinEventHook : IDisposable
         [DllImport("user32.dll")] private static extern int GetWindowText(IntPtr hWnd, System.Text.StringBuilder lpString, int nMaxCount);
         [DllImport("user32.dll")] private static extern int GetWindowTextLength(IntPtr hWnd);
         [DllImport("user32.dll")] private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
-
 
         public static string GetWindowText(IntPtr hwnd)
         {
