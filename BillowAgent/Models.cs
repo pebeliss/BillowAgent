@@ -16,9 +16,7 @@ public record Session(
     bool? Billable,
     double Confidence);
 
-
 public record MeetingWindow(DateTime StartUtc, DateTime EndUtc, string Provider); // teamsForBusiness
-
 
 public class AppConfig
 {
