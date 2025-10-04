@@ -8,6 +8,8 @@ namespace BillowAgent;
 
 public class TrayAppContext : ApplicationContext
 {
+    private readonly NotifyIcon _tray;
+    private readonly Storage _storage;
     private readonly WinEventHook _hook;
     private readonly IdleMonitor _idle;
     private readonly BrowserServer _browser;
@@ -49,7 +51,6 @@ public class TrayAppContext : ApplicationContext
         ((ToolStripMenuItem)_tray.ContextMenuStrip!.Items[0]).Text = _paused ? "Resume Tracking" : "Pause Tracking";
     }
 
-
     private async Task SyncCalendar()
     {
         try
@@ -66,7 +67,6 @@ public class TrayAppContext : ApplicationContext
             _tray.ShowBalloonTip(3000);
         }
     }
-
 
     protected override void ExitThreadCore()
     {
