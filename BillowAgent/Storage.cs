@@ -9,7 +9,7 @@ public class Storage
 {
     private readonly string _dbPath;
     public string DbDirectory => Path.GetDirectoryName(_dbPath)!;
-
+    
     public Storage(string dbPath) { _dbPath = dbPath; }
 
     private IDbConnection Open()
@@ -67,27 +67,26 @@ public class Storage
         );
         ");
 
-
         // Seed rules if empty
         var count = db.ExecuteScalar<int>("SELECT COUNT(1) FROM rules");
         if (count == 0)
         {
             db.Execute(@"INSERT INTO rules (match_type, pattern, category, client, billable) VALUES
-            ('exe','ms-teams.exe','Teams Chat/Browsing',NULL,NULL),
-            ('exe','Teams.exe','Teams Chat/Browsing',NULL,NULL),
-            ('exe','OUTLOOK.EXE','Email',NULL,NULL),
-            ('exe','EXCEL.EXE','Spreadsheet',NULL,1),
-            ('exe','WINWORD.EXE','Document Editing',NULL,1),
-            ('exe','POWERPNT.EXE','Slides',NULL,1),
+                ('exe','ms-teams.exe','Teams Chat/Browsing',NULL,NULL),
+                ('exe','Teams.exe','Teams Chat/Browsing',NULL,NULL),
+                ('exe','OUTLOOK.EXE','Email',NULL,NULL),
+                ('exe','EXCEL.EXE','Spreadsheet',NULL,1),
+                ('exe','WINWORD.EXE','Document Editing',NULL,1),
+                ('exe','POWERPNT.EXE','Slides',NULL,1),
 
 
-            ('domain','atlassian.net','Jira/Confluence',NULL,1),
-            ('domain','jira','Jira/Confluence',NULL,1),
-            ('domain','confluence','Jira/Confluence',NULL,1),
+                ('domain','atlassian.net','Jira/Confluence',NULL,1),
+                ('domain','jira','Jira/Confluence',NULL,1),
+                ('domain','confluence','Jira/Confluence',NULL,1),
 
 
-            ('title_contains','Client A','', 'Client A', 1),
-            ('title_contains','ACME','', 'Client A', 1)
+                ('title_contains','Client A','', 'Client A', 1),
+                ('title_contains','ACME','', 'Client A', 1)
             ;");
         }
     }
@@ -132,13 +131,11 @@ public class Storage
             db.Execute("INSERT INTO meeting_windows (start_utc,end_utc,provider) VALUES (@s,@e,@p)", new { s = w.StartUtc.ToString("o"), e = w.EndUtc.ToString("o"), p = w.Provider });
     }
 
-
     public IEnumerable<(string matchType, string pattern, string category, string? client, int? billable)> GetRules()
     {
         using var db = Open();
         return db.Query<(string,string,string,string,int?)>("SELECT match_type, pattern, category, client, billable FROM rules");
     }
-
 
     private static string ExtractDomain(string url)
     {
