@@ -34,7 +34,13 @@ public class TrayAppContext : ApplicationContext
         menu.Items.Add("Exit", null, (_,__) => ExitThread());
         _tray.ContextMenuStrip = menu;
 
-        _browser.Start();
+        try { _browser.Start(); }
+        catch (Exception ex)
+        {
+            _tray.BalloonTipTitle = "Browser listener disabled";
+            _tray.BalloonTipText = ex.Message;
+            _tray.ShowBalloonTip(4000);
+        }
         _hook.Start();
         _idle.Start();
         // Optional: kickoff background calendar sync
