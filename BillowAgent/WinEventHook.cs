@@ -22,12 +22,12 @@ public class WinEventHook : IDisposable
     public void Start()
     {
         _proc = Callback;
-        _hook = SetWinEventHook(EVENT_SYSTEM_FOREGROUND, EVENT_SYSTEM_FOREGROUND, IntPtr.Zero, _proc, 0, 0, WINEVENT_OUTOFCONTEXT);
+        _hook = Native.SetWinEventHook(EVENT_SYSTEM_FOREGROUND, EVENT_SYSTEM_FOREGROUND, IntPtr.Zero, _proc, 0, 0, WINEVENT_OUTOFCONTEXT);
     }
 
     public void Dispose()
     {
-        if (_hook != IntPtr.Zero) UnhookWinEvent(_hook);
+        if (_hook != IntPtr.Zero) Native.UnhookWinEvent(_hook);
     }
 
     private void Callback(IntPtr hWinEventHook, uint evt, IntPtr hwnd, int idObj, int idChild, uint idThread, uint time)
@@ -48,23 +48,34 @@ public class WinEventHook : IDisposable
 
     private static class Native
     {
-        [DllImport("user32.dll")] private static extern IntPtr SetWinEventHook(uint eventMin, uint eventMax, IntPtr hmodWinEventProc, WinEventDelegate lpfnWinEventProc, uint idProcess, uint idThread, uint dwFlags);
-        [DllImport("user32.dll")] private static extern bool UnhookWinEvent(IntPtr hWinEventHook);
-        [DllImport("user32.dll")] private static extern IntPtr GetForegroundWindow();
+        [DllImport("user32.dll")] public static extern IntPtr SetWinEventHook(uint eventMin, uint eventMax, IntPtr hmodWinEventProc, WinEventDelegate lpfnWinEventProc, uint idProcess, uint idThread, uint dwFlags);
+        [DllImport("user32.dll")] public static extern bool UnhookWinEvent(IntPtr hWinEventHook);
         [DllImport("user32.dll")] private static extern int GetWindowText(IntPtr hWnd, System.Text.StringBuilder lpString, int nMaxCount);
         [DllImport("user32.dll")] private static extern int GetWindowTextLength(IntPtr hWnd);
         [DllImport("user32.dll")] private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
-
-        public static string GetWindowText(IntPtr hwnd)
-        {
-            int length = GetWindowTextLength(hwnd);
-            var sb = new System.Text.StringBuilder(length + 1);
-            _ = GetWindowText(hwnd, sb, sb.Capacity);
-            return sb.ToString();
-        }
-        public static int GetPidFromHwnd(IntPtr hwnd)
-        { GetWindowThreadProcessId(hwnd, out uint pid); return (int)pid; }
-        public static string GetProcessName(int pid)
-        { try { return Process.GetProcessById(pid).ProcessName + ".exe"; } catch { return "unknown.exe"; } }
+        public static string GetWindowText(IntPtr hwnd) { var len = GetWindowTextLength(hwnd); var sb = new System.Text.StringBuilder(len + 1); _ = GetWindowText(hwnd, sb, sb.Capacity); return sb.ToString(); }
+        public static int GetPidFromHwnd(IntPtr hwnd) { GetWindowThreadProcessId(hwnd, out uint pid); return (int)pid; }
+        public static string GetProcessName(int pid) { try { return System.Diagnostics.Process.GetProcessById(pid).ProcessName + ".exe"; } catch { return "unknown.exe"; } }
     }
+    // private static class Native
+    // {
+    //     [DllImport("user32.dll")] private static extern IntPtr SetWinEventHook(uint eventMin, uint eventMax, IntPtr hmodWinEventProc, WinEventDelegate lpfnWinEventProc, uint idProcess, uint idThread, uint dwFlags);
+    //     [DllImport("user32.dll")] private static extern bool UnhookWinEvent(IntPtr hWinEventHook);
+    //     [DllImport("user32.dll")] private static extern IntPtr GetForegroundWindow();
+    //     [DllImport("user32.dll")] private static extern int GetWindowText(IntPtr hWnd, System.Text.StringBuilder lpString, int nMaxCount);
+    //     [DllImport("user32.dll")] private static extern int GetWindowTextLength(IntPtr hWnd);
+    //     [DllImport("user32.dll")] private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
+
+    //     public static string GetWindowText(IntPtr hwnd)
+    //     {
+    //         int length = GetWindowTextLength(hwnd);
+    //         var sb = new System.Text.StringBuilder(length + 1);
+    //         _ = GetWindowText(hwnd, sb, sb.Capacity);
+    //         return sb.ToString();
+    //     }
+    //     public static int GetPidFromHwnd(IntPtr hwnd)
+    //     { GetWindowThreadProcessId(hwnd, out uint pid); return (int)pid; }
+    //     public static string GetProcessName(int pid)
+    //     { try { return Process.GetProcessById(pid).ProcessName + ".exe"; } catch { return "unknown.exe"; } }
+    // }
 }

@@ -134,7 +134,7 @@ public class Storage
     public IEnumerable<(string matchType, string pattern, string category, string? client, int? billable)> GetRules()
     {
         using var db = Open();
-        return db.Query<(string,string,string,string,int?)>("SELECT match_type, pattern, category, client, billable FROM rules");
+        return db.Query<(string,string,string,string?,int?)>("SELECT match_type, pattern, category, client, billable FROM rules");
     }
 
     private static string ExtractDomain(string url)

@@ -3,3 +3,4 @@ C:\Users\Elissa\Documents\BillowAgent\BillowAgent\obj\Debug\net8.0-windows\Billo
 C:\Users\Elissa\Documents\BillowAgent\BillowAgent\obj\Debug\net8.0-windows\BillowAgent.AssemblyInfoInputs.cache
 C:\Users\Elissa\Documents\BillowAgent\BillowAgent\obj\Debug\net8.0-windows\BillowAgent.AssemblyInfo.cs
 C:\Users\Elissa\Documents\BillowAgent\BillowAgent\obj\Debug\net8.0-windows\BillowAgent.csproj.CoreCompileInputs.cache
+C:\Users\Elissa\Documents\BillowAgent\BillowAgent\obj\Debug\net8.0-windows\BillowAgent.sourcelink.json

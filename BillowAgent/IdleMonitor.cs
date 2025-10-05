@@ -16,7 +16,7 @@ public class IdleMonitor
     public IdleMonitor(TimeSpan threshold)
     {
         _threshold = threshold;
-        _timer = new Timer(3000);
+        _timer = new System.Timers.Timer(3000);
         _timer.Elapsed += (_,__) => Tick();
     }
 
