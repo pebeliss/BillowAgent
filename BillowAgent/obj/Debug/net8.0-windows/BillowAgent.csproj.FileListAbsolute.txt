@@ -1,4 +1,5 @@
 C:\Users\Elissa\Documents\BillowAgent\BillowAgent\bin\Debug\net8.0-windows\BillowAgent.exe
+C:\Users\Elissa\Documents\BillowAgent\BillowAgent\bin\Debug\net8.0-windows\appsettings.json
 C:\Users\Elissa\Documents\BillowAgent\BillowAgent\bin\Debug\net8.0-windows\BillowAgent.deps.json
 C:\Users\Elissa\Documents\BillowAgent\BillowAgent\bin\Debug\net8.0-windows\BillowAgent.runtimeconfig.json
 C:\Users\Elissa\Documents\BillowAgent\BillowAgent\bin\Debug\net8.0-windows\BillowAgent.dll

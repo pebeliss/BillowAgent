@@ -44,7 +44,7 @@ public class TrayAppContext : ApplicationContext
         _hook.Start();
         _idle.Start();
         // Optional: kickoff background calendar sync
-        _ = SyncCalendar();
+        _ = System.Threading.Tasks.Task.Run(SyncCalendar);
     }
 
     private void TogglePause()
