@@ -176,4 +176,8 @@ _tray.BalloonTipTitle = $"Synced {windows.Count} meeting windows";
 _tray.ShowBalloonTip(1500);
 }
 
-4. 
+4. To avoid failing with Exit Code 1, we run below in Powershell as administrator:
+netsh http add urlacl url=http://localhost:57451/ws/ user=$env:Elissa
+To remove that, run:
+netsh http delete urlacl url=http://localhost:57451/ws/
+

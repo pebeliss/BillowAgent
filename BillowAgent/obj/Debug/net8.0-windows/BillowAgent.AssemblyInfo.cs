@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BillowAgent")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a12769f8df4d02654410201544d92b9531ea07c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ace6e16576c2b15fda0b4491fb204cc3dd3583a4")]
 [assembly: System.Reflection.AssemblyProductAttribute("BillowAgent")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BillowAgent")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
